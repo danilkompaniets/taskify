@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export default authMiddleware({
   publicRoutes: ["/"],
-  afterAuth(auth, req) {
+  afterAuth(auth: { userId: any; isPublicRoute: any; orgId: any; }, req: { url: string | URL | undefined; nextUrl: { pathname: string; }; }) {
     if (auth.userId && auth.isPublicRoute) {
       let path = "select-org";
       if (auth.orgId) {

@@ -1,9 +1,21 @@
-import { OrganizationSwitcher, auth } from "@clerk/nextjs";
-import React from "react";
+import { db } from "@/lib/db";
+import { Board } from "./Board";
+import Form from "./Form";
 
-const page = () => {
-  const { userId, orgId } = auth();
-  return <h1>page</h1>;
+const page = async () => {
+  const boards = await db.board.findMany()
+  return (
+    <div className="flex flex-col space-y-4">
+      <Form />
+      <div className="space-y-2">
+        {
+          boards.map((board) => (
+            <Board id={board.id} title={board.title} />
+          ))
+        }
+      </div>
+    </div>
+  );
 };
 
 export default page;

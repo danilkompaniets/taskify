@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { useMobileSidebar } from "@/hooks/UseMobileSedebar";
+import { useMobileSidebar } from "@/hooks/useMobileSidebar";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
