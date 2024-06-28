@@ -2,59 +2,62 @@ import { useState, useCallback } from "react";
 
 import { ActionState, FieldErrors } from "@/lib/createSafeAction";
 
-type Action<TInput, TOutput> = (data: TInput) => Promise<ActionState<TInput, TOutput>>
+type Action<TInput, TOutput> = (
+  data: TInput
+) => Promise<ActionState<TInput, TOutput>>;
 
 interface UseActionOptions<TOutput> {
-    onSuccess?: (data: TOutput) => void
-    onError?: (error: string) => void
-    onComplete?: () => void
+  onSuccess?: (data: TOutput) => void;
+  onError?: (error: string) => void;
+  onComplete?: () => void;
 }
 
 export const useAction = <TInput, TOutput>(
-    action: Action<TInput, TOutput>,
-    options: UseActionOptions<TOutput> = {}
+  action: Action<TInput, TOutput>,
+  options: UseActionOptions<TOutput> = {}
 ) => {
-    const [fieldErrors, setFieldErrors] = useState<FieldErrors<TInput> | undefined>(undefined)
+  const [fieldErrors, setFieldErrors] = useState<
+    FieldErrors<TInput> | undefined
+  >(undefined);
 
-    const [error, setError] = useState<string | undefined>(undefined)
-    const [data, setData] = useState<TOutput | undefined>(undefined)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [data, setData] = useState<TOutput | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const execute = useCallback(
-        async (input: TInput) => {
-            setIsLoading(true)
-            try {
-                const result = await action(input)
-                if (!result) return
+  const execute = useCallback(
+    async (input: TInput) => {
+      setIsLoading(true);
+      try {
+        const result = await action(input);
+        if (!result) return;
 
-                if (result.fieldErrors) {
-                    setFieldErrors(result.fieldErrors)
-                }
+        setFieldErrors(result.fieldErrors);
 
-                if (result.error) {
-                    setError(result.error) // Use setError instead of setErrorMap
-                    options.onError?.(result.error)
-                }
-                if (result.data) {
-                    setData(result.data)
-                    options.onSuccess?.(result.data)
-                }
-            } catch (error: any) { // Catch and handle errors
-                setError(error.message) // Set the error message
-                options.onError?.(error.message)
-            } finally {
-                setIsLoading(false)
-                options.onComplete?.()
-            }
-        },
-        [action, options]
-    )
+        if (result.error) {
+          setError(result.error); // Use setError instead of setErrorMap
+          options.onError?.(result.error);
+        }
+        if (result.data) {
+          setData(result.data);
+          options.onSuccess?.(result.data);
+        }
+      } catch (error: any) {
+        // Catch and handle errors
+        setError(error.message); // Set the error message
+        options.onError?.(error.message);
+      } finally {
+        setIsLoading(false);
+        options.onComplete?.();
+      }
+    },
+    [action, options]
+  );
 
-    return {
-        execute,
-        isLoading,
-        data,
-        error,
-        fieldErrors
-    }
-}
+  return {
+    execute,
+    isLoading,
+    data,
+    error,
+    fieldErrors,
+  };
+};

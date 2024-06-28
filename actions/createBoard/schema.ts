@@ -1,15 +1,17 @@
-import { title } from "process"
-import { z } from "zod"
+import { title } from "process";
+import { z } from "zod";
 
 export const CreateBoard = z.object({
-    title: z.string({
-        required_error: "Title is required",
-        invalid_type_error: "Title is required"
-
-    }).min(3, {
-        message: "Title is too short."
-    }
-
-
-    )
-})
+  title: z
+    .string({
+      required_error: "Title is required",
+      invalid_type_error: "Title is required",
+    })
+    .min(3, {
+      message: "Title is too short.",
+    }),
+  image: z.string({
+    required_error: "image is required",
+    invalid_type_error: "image is required",
+  }),
+});

@@ -1,18 +1,20 @@
 import { db } from "@/lib/db";
-import { Board } from "./Board";
-import Form from "./Form";
+import Info from "./_components/Info";
+import { Separator } from "@/components/ui/separator";
+import BoardList from "./_components/BoardList";
+import { Suspense } from "react";
 
 const page = async () => {
-  const boards = await db.board.findMany()
   return (
-    <div className="flex flex-col space-y-4">
-      <Form />
-      <div className="space-y-2">
-        {
-          boards.map((board) => (
-            <Board id={board.id} title={board.title} />
-          ))
-        }
+    <div className="flex flex-col w-full space-y-4">
+      <Info />
+      <Separator />
+      <div className="my-4">
+        <div className="px-2 md:px-4">
+          <Suspense fallback={<BoardList.Skeleton />}>
+            <BoardList />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

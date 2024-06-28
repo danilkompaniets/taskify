@@ -4,32 +4,35 @@ import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Plus } from "lucide-react";
 import React from "react";
 import MobileSidebar from "./MobileSidebar";
+import FormPopover from "@/components/form/FormPopover";
 
 const Navbar = () => {
-
-
   return (
-    <nav className="fixed px-4 z-50 top-0 w-full h-14 border-b shadow-sm bg-white flex items-center">
+    <nav className="fixed px-4 z-50 top-0 w-full h-14 border-b shadow-sm bg-white flex justify-center items-center">
       <MobileSidebar />
 
-      <div className="md:max-w-screen-2xl mx-auto flex items-center w-full gap-x-4">
+      <div className="md:max-w-screen-xl mr-auto flex items-center w-full gap-x-4">
         <div className="hidden md:flex">
           <Logo />
         </div>
-        <Button
-          size={"sm"}
-          variant={"primary"}
-          className="rounded-sm hidden md:block h-auto py-1.5 px-2"
-        >
-          Create
-        </Button>
-        <Button
-          size={"sm"}
-          variant={"primary"}
-          className="rounded-sm block md:hidden"
-        >
-          <Plus className="h-4 w-4" />
-        </Button>
+        <FormPopover align="start" side="bottom" sideOffset={18}>
+          <Button
+            size={"sm"}
+            variant={"primary"}
+            className="rounded-sm hidden md:block h-auto py-1.5 px-2"
+          >
+            Create
+          </Button>
+        </FormPopover>
+        <FormPopover align="start" side="bottom" sideOffset={18}>
+          <Button
+            size={"sm"}
+            variant={"primary"}
+            className="rounded-sm block md:hidden"
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </FormPopover>
       </div>
       <div className="ml-auto flex items-center gap-x-2">
         <OrganizationSwitcher
