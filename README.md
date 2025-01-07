@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Taskify (Проект, вдохновленный Trello) ✅
 
-## Getting Started
+## Обзор  
+**Taskify** — это полнофункциональное приложение для управления задачами, которое я разработал на базе **Next.js 14**. Оно позволяет создавать доски, списки и карточки для упрощения рабочих процессов, повышения продуктивности или организации заметок. Благодаря удобной функции перетаскивания (Drag-and-Drop) и поддержке рабочих пространств, Taskify идеально подходит для совместной работы в современной SaaS-среде.  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Описание  
+Taskify предоставляет удобную и безопасную платформу для организации задач и проектов:  
+- **Интуитивные инструменты совместной работы** для повышения производительности команд.  
+- **Функция перетаскивания** для легкого управления списками и карточками.  
+- **Рабочие пространства** для сосредоточения команд на конкретных проектах.  
+- Чистый, отзывчивый интерфейс с надежной серверной поддержкой.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Технологический стек  
+- **Фронтенд:** Next.js 14, React, TypeScript, TailwindCSS  
+- **Бэкенд:** Prisma, MySQL (на базе PlanetScale), Server Actions  
+- **Аутентификация:** Clerk  
+- **UI-компоненты:** shadcn-ui  
+- **Дополнительно:** API Unsplash для случайных обложек изображений  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## Основные функции  
+- **SaaS-приложение** с бесплатными и премиум-тарифами.  
+- **Аутентификация через Clerk** для безопасного использования.  
+- **Рабочие пространства** для совместной работы и организации задач.  
+- **Функция Drag-and-Drop** для удобной организации списков и карточек.  
+- **Журналы активности** для отслеживания изменений и прогресса.  
+- **Действия с досками, списками и карточками** с ограничениями для бесплатных пользователей.  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Taskify создан для повышения эффективности команд и индивидуальных пользователей, обеспечивая удобное и организованное управление задачами и совместной работой.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![image](https://github.com/user-attachments/assets/f6b0d8ac-6b11-4f51-80cc-3655144db830)
 
-## Deploy on Vercel
+![image](https://github.com/user-attachments/assets/4d24c423-a22a-4ef9-ba3b-575a2757b0ae)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://github.com/user-attachments/assets/c7accee4-2f54-4b34-85df-e8e8fdc16d65)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/user-attachments/assets/421ebc0d-56cc-4178-8f6f-83efc606098c)
+
+![image](https://github.com/user-attachments/assets/0900ae2b-2290-451c-8b31-3dcb702371b3)
+
+![image](https://github.com/user-attachments/assets/cfbf52a9-3473-4e4f-942d-c147c444f919)
+
+
+
+
+
+
